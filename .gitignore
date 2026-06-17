@@ -1,0 +1,12 @@
+assets
+cometchat/cache
+cometchat/error.log
+images/*
+images/scanned_documents/*
+rosario
+sandbox
+temp
+protected/runtime/*
+protected/config/main.php
+sync/wdbconfig.php
+.DS_Store
