@@ -36,18 +36,19 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 </div><!-- search-form -->
 
 <?php 
-$url ="http://".$_SERVER["HTTP_HOST"]."/"; $url = "";
+$url = Yii::app()->params['patientFolderName'];
+// $url ="http://".$_SERVER["HTTP_HOST"]."/"; $url = "";
 $this->widget('zii.widgets.grid.CGridView', array( 'template'=>"{summary}\n{pager}\n{items}\n{pager}\n{summary}",
 	'id'=>'patient-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
 		'id',
-            array(
-                'name'=>'image',
-                'type'=>'html',
-                'value'=>'(!empty($data->filename))?CHtml::image("'.$url.'".$data->filename,"",array("style"=>"height:128px;")):"no image"',
-            ),
+        array(
+            'name'=>'image',
+            'type'=>'raw',
+            'value'=>'(!empty($data->filename))?CHtml::image("'.$url.'/".$data->filename,"",array("style"=>"height:128px;")):"no image"',
+        ),
 		'firstname',
 		'lastname',
 		'birthdate',

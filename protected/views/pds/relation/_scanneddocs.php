@@ -7,6 +7,8 @@ $dataSource = new CActiveDataProvider('PdsPatientScannedDocs', array(
                 'pageSize'=>10,
         ),
  ));
+$url = Yii::app()->params['scannedDocumentsFolderName']."/";
+
 $this->widget('zii.widgets.grid.CGridView', array( 'template'=>"{summary}\n{pager}\n{items}\n{pager}\n{summary}",
         'id'=>'pdsPatientScannedDocs-grid',
         'dataProvider'=>$dataSource,
@@ -15,10 +17,13 @@ $this->widget('zii.widgets.grid.CGridView', array( 'template'=>"{summary}\n{page
                 'title',
                 'description',
                 array(
-                    'header'=>'File Path',
+                    'header'=> 'File Path',
                     'name'  => 'filepath',
-                    'value' => 'CHtml::link($data->filepath, $data->filepath, array("target"=>"_new"))',
-                    // 'value' => 'CHtml::link($data->filepath, $data->filepath, array( "onclick" => "window.open(\'$data->filepath\')"))',
+                    'value' => 'CHtml::link($data->filepath, "'.$url.'$data->filepath", array("target"=>"_new"))',
+                    // 'value'  => function($data) use ($url) {
+                    //     $fullUrl = $url . $data->filepath; 
+                    //     return CHtml::link($data->filepath, $fullUrl, array("target" => "_blank"));
+                    // },
                     'type'  => 'raw',
                  ),
                 // 'filepath',

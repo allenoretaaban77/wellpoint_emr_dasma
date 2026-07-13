@@ -3,6 +3,8 @@ $this->breadcrumbs=array(
 	'Patients'=>array('admin'),
 	$model->firstname
 );
+
+$url = Yii::app()->params['patientFolderName'];
 ?>
 
 <h1>View Patient <?php echo $model->firstname; ?></h1>
@@ -14,7 +16,7 @@ $this->breadcrumbs=array(
         array(
              'name'=>'filename',
              'type'=>'raw',
-             'value'=>'<img src="'.$model->filename.'" style="height:128px" />',
+             'value'=>'<img src="'.$url.'/'.$model->filename.'" style="height:128px" />',
         ),
 		'firstname',
 		'lastname',

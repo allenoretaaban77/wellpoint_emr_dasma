@@ -77,11 +77,13 @@ class ApeScanneddocsController extends RController
                 $model->file=CUploadedFile::getInstance($model,'file');
                 if ($model->file!=null)
                 {
-                    $folder_physical = 'D:/emr/images/ape_scanned_documents/';
+            		$folder_name = Yii::app()->params['apeScannedDocumentsFolderName'];
+    				$folder_physical = Yii::app()->params['apeScannedDocumentsFolderPhysical'];
+                    // $folder_physical = 'D:/emr/images/ape_scanned_documents/';
                     if(!file_exists($folder_physical)){
                         mkdir($folder_physical, 0777, true);
                     }
-                    $folder_name = 'http://wpdemrd/ape_scanned_documents';
+                    // $folder_name = 'http://wpdemrd/ape_scanned_documents';
                     $file_name = 'scanned_'.$model->id.'.'.$model->file->extensionName;
                     $model->filepath=$folder_name.'/'.$file_name;
                     $model->filename=$file_name;
@@ -136,11 +138,13 @@ class ApeScanneddocsController extends RController
             $model->file=CUploadedFile::getInstance($model,'file');
             if ($model->file!=null)
             {
-                $folder_physical = 'D:/emr/images/ape_scanned_documents/';
+        		$folder_name = Yii::app()->params['apeScannedDocumentsFolderName'];
+				$folder_physical = Yii::app()->params['apeScannedDocumentsFolderPhysical'];
+                // $folder_physical = 'D:/emr/images/ape_scanned_documents/';
                 if(!file_exists($folder_physical)){
                     mkdir($folder_physical, 0777, true);
                 }
-                $folder_name = 'http://wpdemrd/ape_scanned_documents';
+                // $folder_name = 'http://wpdemrd/ape_scanned_documents';
                 $file_name = 'scanned_'.$model->id.'.'.$model->file->extensionName;
                 $model->filepath=$folder_name.'/'.$file_name;
                 $model->filename=$file_name;

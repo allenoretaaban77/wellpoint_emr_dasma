@@ -405,7 +405,7 @@ class PdsController extends RController
         $print = str_replace("[patid]",$patid,$print);
         $print = str_replace("[company]",$patient->company,$print);
         //patient image
-        $picture = $patient->filename; //Yii::app()->request->baseUrl.'/'.$patient->filename;
+        $picture = Yii::app()->params['patientFolderName']."/".$patient->filename;
         $print = str_replace("[filename]",$picture,$print); 
 		// patient address
         $add = '';
@@ -523,7 +523,7 @@ class PdsController extends RController
         $print = str_replace("[patid]",$patid,$print);
         $print = str_replace("[company]",$patient->company,$print);
         //patient image
-        $picture = $patient->filename; //Yii::app()->request->baseUrl.'/'.$patient->filename;
+        $picture = Yii::app()->params['patientFolderName']."/".$patient->filename;
         $print = str_replace("[filename]",$picture,$print);  
         /*      
         //other informations
@@ -621,7 +621,7 @@ class PdsController extends RController
         $patient->id == "" ? $patid = '______' : $patid = $patient->id;
         $print = str_replace("[patid]",$patid,$print);
         //patient image
-        $picture = $patient->filename; //Yii::app()->request->baseUrl.'/'.$patient->filename;
+        $picture = Yii::app()->params['patientFolderName']."/".$patient->filename;
         $print = str_replace("[filename]",$picture,$print);
         //address
         $add = '';
@@ -734,7 +734,7 @@ class PdsController extends RController
         $patient->id == "" ? $patid = '______' : $patid = $patient->id;
         $print = str_replace("[patid]",$patid,$print);
         //patient image
-        $picture = $patient->filename; //Yii::app()->request->baseUrl.'/'.$patient->filename;
+        $picture = Yii::app()->params['patientFolderName']."/".$patient->filename;
         $print = str_replace("[filename]",$picture,$print);
 		
 		$contact_no='';$mob='';$tel='';
@@ -844,7 +844,7 @@ class PdsController extends RController
         $print = str_replace("[patid]",$patid,$print);
         $print = str_replace("[company]",$patient->company,$print);
         //patient image
-        $picture = $patient->filename; //Yii::app()->request->baseUrl.'/'.$patient->filename;
+        $picture = Yii::app()->params['patientFolderName']."/".$patient->filename;
         $print = str_replace("[filename]",$picture,$print);  
         //address
         $add = '';
@@ -951,7 +951,7 @@ class PdsController extends RController
         $print = str_replace("[patid]",$patid,$print);
         $print = str_replace("[company]",$patient->company,$print);
         //patient image
-        $picture = $patient->filename; //Yii::app()->request->baseUrl.'/'.$patient->filename;
+        $picture = Yii::app()->params['patientFolderName']."/".$patient->filename;
         $print = str_replace("[filename]",$picture,$print);  
         //address
         $add = '';

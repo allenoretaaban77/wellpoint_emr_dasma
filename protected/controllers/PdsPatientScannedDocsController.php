@@ -72,16 +72,19 @@ class PdsPatientScannedDocsController extends RController
             $model->pds_id=$_GET['id'];
             $model->patient_id=$model->pds->patient_id;
 			if($model->save()){
+            	$folder_name = Yii::app()->params['scannedDocumentsFolderName'];
+    			$folder_physical = Yii::app()->params['scannedDocumentsFolderPhysical'];
+        			
                 $model->file=CUploadedFile::getInstance($model,'file');
-            	$folder_name = 'http://wpdemrd/scanned_documents';
+            	// $folder_name = 'http://wpdemrd/scanned_documents';
                 if ($model->file!=null)
                 {
-                	$folder_physical = 'D:/emr/images/scanned_documents/';
+                	// $folder_physical = 'D:/emr/images/scanned_documents/';
                 	$file_name = 'scanned_'.$model->id.'.'.$model->file->extensionName;
-                    $model->filepath=$folder_name.'/'.$file_name;
+                    $model->filepath=$file_name;
                     $model->file->saveAs($folder_physical.'/'.$file_name);
                 } else
-                    $model->filepath=$folder_name.'/noimage.png';
+                    $model->filepath='noimage.png';
                 $model->save();
             
 				$this->redirect(array('pds/view','id'=>$model->pds_id));
@@ -111,8 +114,10 @@ class PdsPatientScannedDocsController extends RController
             $model->file=CUploadedFile::getInstance($model,'file');
             if ($model->file!=null)
             {
-            	$folder_physical = 'D:/emr/images/scanned_documents/';
-            	$folder_name = 'http://wpdemrd/scanned_documentss';
+            	$folder_name = Yii::app()->params['scannedDocumentsFolderName'];
+    			$folder_physical = Yii::app()->params['scannedDocumentsFolderPhysical'];
+            	// $folder_physical = 'D:/emr/images/scanned_documents/';
+            	// $folder_name = 'http://wpdemrd/scanned_documentss';
             	$file_name = 'scanned_'.$model->id.'.'.$model->file->extensionName;
                 $model->filepath=$folder_name.'/'.$file_name;
                 $model->file->saveAs($folder_physical.'/'.$file_name);

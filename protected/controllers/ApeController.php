@@ -1058,7 +1058,7 @@ class ApeController extends RController
         $patient = $ape->patient;      
         $print = implode("", file(Yii::app()->getBasePath().'/views/ape/include/ape_form_frontpage.html'));
         $imgurl = Yii::app()->request->baseUrl.'/images/ape_folder';
-        $print = str_replace("[imgursl]",$imgurl,$print);    
+        $print = str_replace("[imgurl]",$imgurl,$print);    
         //$logo = Yii::app()->request->baseUrl.'/images/printdiagresult/wpprintlogo.png';
         $logo = 'http://'.$_SERVER["HTTP_HOST"].'/images/printdiagresult/wpprintlogo.png';
 
@@ -1136,7 +1136,7 @@ class ApeController extends RController
                 $print = str_replace("[company]",$client->client_name,$print);
             }
             //patient image
-            $picture = $patient->filename; //Yii::app()->request->baseUrl.'/'.$patient->filename;
+            $picture = Yii::app()->params['patientFolderName']."/".$patient->filename;
             $print = str_replace("[filename]",$picture,$print);   
             
             if($ape->is_preemployment == 1){

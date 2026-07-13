@@ -12,9 +12,11 @@ $this->menu=array(
     array('label'=>'Download', 'url'=>'../'.$model->filepath,
             'linkOptions'=>array('confirm'=>'Are you sure you want to download this file?')),
 );
+
+$url = Yii::app()->params['scannedDocumentsFolderName'];
 ?>
 
-<h1>View Scanned Document<?php echo $model->id; ?></h1>
+<h1>View Scanned Document <?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
@@ -26,9 +28,9 @@ $this->menu=array(
 )); ?>
 <br>
 <center>
-	<a href="<?=$model->filepath ?>" target="_blank">CLICK HERE TO VIEW DIRECTLY TO BROWSER</a>	
+	<a href="<?=$url."/".$model->filepath ?>" target="_blank">CLICK HERE TO VIEW DIRECTLY TO BROWSER</a>	
 	<br>
-	<iframe src="<?=$model->filepath ?>" height="1000" width="700" style="margin:10px 0px 0px 0px;padding:0px;"></iframe>
+	<iframe src="<?=$url."/".$model->filepath ?>" height="1000" width="700" style="margin:10px 0px 0px 0px;padding:0px;"></iframe>
 	<!--embed width=700 height=1000
     src="<?=$model->filepath ?>" type="image/tiff/pdf"
     negative=no fit=width page=1 smooth=yes toolbar=top bgcolor="#006400"  style="margin:10px 0px 10px 0px"-->

@@ -152,5 +152,11 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'rom.gapuz@gmail.com',
+		'patientFolderName' => 'http://wpdemr.local/patients',
+        'patientFolderPhysical' => '//WPDNASADMIN/home/images/patients',
+		'scannedDocumentsFolderName' => 'http://wpdemr.local/scanned_documents',
+        'scannedDocumentsFolderPhysical' => '//WPDNASADMIN/home/images/scanned_documents',
+		'apeScannedDocumentsFolderName' => 'http://wpdemr.local/scanned_documents',
+        'apeScannedDocumentsFolderPhysical' => '//WPDNASADMIN/home/images/scanned_documents',
 	),
 );

@@ -71,17 +71,20 @@ class PatientController extends RController
 			$model->attributes=$_POST['Patient'];
 			if($model->save())
             {
-					$folder_name = 'http://wpdemrd/patients';
+                	$folder_name = Yii::app()->params['patientFolderName'];
+        			$folder_physical = Yii::app()->params['patientFolderPhysical'];
+					// $folder_name = 'http://wpdnas/patients/';
                     $model->image=CUploadedFile::getInstance($model,'image');
                     if ($model->image!=null)
                     {
-    					$folder_physical = 'D:/emr/images/patients/';
+                    	// $folder_physical = '//WPDNASADMIN/home/images/patients';
+    					// $folder_physical = 'file://wpdnasadmin/home/images/patients/';
     					$file_name = 'patient_'.$model->id.'.'.$model->image->extensionName;
-                        $model->filename=$folder_name.'/'.$file_name;
+                        $model->filename = $file_name;
                         // $model->image->saveAs($model->filename);
         				$model->image->saveAs($folder_physical.'/'.$file_name);
                     } else
-                        $model->filename=$folder_name.'/noimage.png';
+                        $model->filename = '/noimage.png';
                     $model->save();
 
                 // logs
@@ -114,10 +117,15 @@ class PatientController extends RController
                         $model->image=CUploadedFile::getInstance($model,'image');
                         if ($model->image!=null)
                         {
-        					$folder_physical = 'D:/emr/images/patients/';
-        					$folder_name = 'http://wpdemrd/patients';
+                        	$folder_name = Yii::app()->params['patientFolderName'];
+                			$folder_physical = Yii::app()->params['patientFolderPhysical'];
+                        	// $folder_physical = '//WPDNASADMIN/home/images/patients';
+        					// $folder_physical = 'D:/emr/images/patients/';
+							// $folder_name = 'http://wpdnas/patients';
+        					// $folder_name = 'http://wpdemrd/patients';
         					$file_name = 'patient_'.$model->id.'.'.$model->image->extensionName;
-                            $model->filename=$folder_name.'/'.$file_name;
+                            // $model->filename=$folder_name.'/'.$file_name;
+                            $model->filename = $file_name;
             				$model->image->saveAs($folder_physical.'/'.$file_name);
                             // $model->filename='images/patient_'.$model->id.'.'.$model->image->extensionName;
                             // $model->image->saveAs($model->filename);
