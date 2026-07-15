@@ -226,7 +226,8 @@ function disApply(itemid, fee, pname, medsvc){
         
          array(
                     'name'=>'Doctor',
-                    'value'=> Doctor::model()->findByPk($model->pay_doc_id)->firstname . " ".Doctor::model()->findByPk($model->pay_doc_id)->lastname
+                    // 'value'=> Doctor::model()->findByPk($model->pay_doc_id)->firstname . " ".Doctor::model()->findByPk($model->pay_doc_id)->lastname
+                    'value'=> ($doc = Doctor::model()->findByPk($model->pay_doc_id)) ? ($doc->firstname . " " . $doc->lastname) : 'N/A'
                 ), 
         
         'check_amnt',

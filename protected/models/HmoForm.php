@@ -22,6 +22,7 @@
 class HmoForm extends CActiveRecord
 {
     public $hmo_billing_date;
+    public $abbreviation;
     
 	/**
 	 * Returns the static model of the specified AR class.

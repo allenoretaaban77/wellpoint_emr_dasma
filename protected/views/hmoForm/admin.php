@@ -49,7 +49,6 @@ $this->widget('zii.widgets.grid.CGridView', array( 'template'=>"{summary}\n{page
 		//'hmo_billing_id',
 		//'hmo_id',
         'hmo_name',
-        'abbreviation',
 		//'patient_id',
 		'patient_name',
 		'entry_date',

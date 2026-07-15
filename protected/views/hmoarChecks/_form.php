@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 if (isset($_SESSION['errmsg']))
 {
     if (count($_SESSION['errmsg']) > 0){
