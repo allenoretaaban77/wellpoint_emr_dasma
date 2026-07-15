@@ -738,7 +738,8 @@ class HmoFormItemsController extends RController
                     
                     $ms_str = isset($charge_category_sub_ansi_med_service[$l]) ? $ms_str." + ".$charge_category_sub_ansi_med_service[$l]."($charge_category_sub_ansi_amount[$l])" : $ms_str."&nbsp;" ;
                     //$msa_str = isset($charge_category_sub_ansi_amount[$l]) ? $msa_str."+".$charge_category_sub_ansi_amount[$l]."+" : $msa_str."" ;
-                    $amount = $amount + $charge_category_sub_ansi_amount[$l];
+                    // $amount = $amount + $charge_category_sub_ansi_amount[$l];
+                    $amount = $amount + (isset($charge_category_sub_ansi_amount[$l]) ? $charge_category_sub_ansi_amount[$l] : 0);
                     $l++;
 
                     $msa_str = $amount == 0 ? "" : number_format($amount,2);

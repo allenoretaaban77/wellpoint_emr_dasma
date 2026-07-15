@@ -16,6 +16,11 @@
                     <?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>128)); ?>
                     <?php echo $form->error($model,'name'); ?>
             </div>
+            <div class="row">
+                    <?php echo $form->labelEx($model,'abbreviation'); ?>
+                    <?php echo $form->textField($model,'abbreviation',array('size'=>60,'maxlength'=>100)); ?>
+                    <?php echo $form->error($model,'abbreviation'); ?>
+            </div>
         </fieldset>
         <fieldset>
             <legend>Address</legend>

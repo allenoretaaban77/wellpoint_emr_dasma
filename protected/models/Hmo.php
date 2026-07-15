@@ -6,6 +6,7 @@
  * The followings are the available columns in table 'Hmo':
  * @property integer $id
  * @property string $name
+ * @property string $abbreviation
  * @property string $street1
  * @property string $street2
  * @property string $barangay
@@ -46,11 +47,12 @@ class Hmo extends CActiveRecord
 		return array(
 			array('name', 'required'),
 			array('name', 'length', 'max'=>128),
+			array('abbreviation', 'length', 'max'=>100),
 			array('street1, street2', 'length', 'max'=>64),
 			array('barangay, city, province', 'length', 'max'=>32),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, street1, street2, barangay, city, province', 'safe', 'on'=>'search'),
+			array('id, name, abbreviation, street1, street2, barangay, city, province', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -75,6 +77,7 @@ class Hmo extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'name' => 'Name',
+			'abbreviation' => 'Abbreviation',
 			'street1' => 'Street 1',
 			'street2' => 'Street 2',
 			'barangay' => 'Barangay',
@@ -96,6 +99,7 @@ class Hmo extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
+		$criteria->compare('abbreviation',$this->name,true);
 		$criteria->compare('street1',$this->street1,true);
 		$criteria->compare('street2',$this->street2,true);
 		$criteria->compare('barangay',$this->barangay,true);
