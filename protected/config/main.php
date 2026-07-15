@@ -1,6 +1,6 @@
 <?php
 
-ini_set(’session.gc_maxlifetime’, 120*60); //30 min
+ini_set('session.gc_maxlifetime', 120*60); //30 min
 
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
