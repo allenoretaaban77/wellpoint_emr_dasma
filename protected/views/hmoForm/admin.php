@@ -60,9 +60,9 @@ $this->widget('zii.widgets.grid.CGridView', array( 'template'=>"{summary}\n{page
         //         'value'=>'HmoBilling::model()->findByPk($data->hmo_billing_id)->date_prepared'                        
         //  ),
         array(
-	    'header' => 'Date Prepared',
-	    'value' => '$data->billing->date_prepared ?? "N/A"',
-	),
+		    'header' => 'Date Prepared',
+		    'value' => 'isset($data->billing->date_prepared) ? $data->billing->date_prepared : "N/A"',
+		),
 		/*           		
 		'control_no',
 		'card_no',
