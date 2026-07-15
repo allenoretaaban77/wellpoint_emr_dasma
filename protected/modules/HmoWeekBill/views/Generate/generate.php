@@ -57,7 +57,7 @@ function submitThis(){
                             array(     
                                 'id'=>'from_date' ,
                                 'name'=>'from_date',   
-                                'value'=>$_GET["from_date"],          
+                                'value'=>isset($_GET["from_date"]) ? $_GET["from_date"] : "",          
                                 'htmlOptions' => array("size"=>'25'),                                           
                                 'options'=>array(
                                     'dateFormat'=>'yy-mm-dd',
@@ -80,7 +80,7 @@ function submitThis(){
                             array(     
                                 'id'=>'to_date' ,
                                 'name'=>'to_date',       
-                                'value'=>$_GET["to_date"],                                                
+                                'value'=>isset($_GET["to_date"]) ? $_GET["to_date"] : "",                                                
                                 'htmlOptions' => array("size"=>'25'),                                           
                                 'options'=>array(
                                     'dateFormat'=>'yy-mm-dd',
@@ -106,7 +106,7 @@ function submitThis(){
                             array(     
                                 'id'=>'due_date' ,
                                 'name'=>'due_date', 
-                                'value'=>$_GET["due_date"], 
+                                'value'=>isset($_GET["due_date"]) ? $_GET["due_date"] : "", 
                                 'htmlOptions' => array("size"=>'25'),                                           
                                 'options'=>array(
                                     'dateFormat'=>'yy-mm-dd',

@@ -10,6 +10,6 @@ $this->breadcrumbs=array(
 );*/
 ?>
 
-<h1>Create HMO Transaction Item</h1>
+<h1>Update HMO Transaction Item</h1>
 
 <?php echo $this->renderPartial('_form_update', array('model'=>$model)); ?>

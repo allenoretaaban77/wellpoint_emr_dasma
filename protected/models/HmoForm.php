@@ -71,6 +71,7 @@ class HmoForm extends CActiveRecord
 			'hmo' => array(self::BELONGS_TO, 'Hmo', 'hmo_id'),
 			'patient' => array(self::BELONGS_TO, 'Patient', 'patient_id'),
 			'hmoFormItems' => array(self::HAS_MANY, 'HmoFormItems', 'hmo_form_id'),
+	  		'billing' => array(self::BELONGS_TO, 'HmoBilling', 'hmo_billing_id'),
 		);
 	}
 
@@ -83,7 +84,7 @@ class HmoForm extends CActiveRecord
 			'id' => 'ID',
 			'hmo_billing_id' => 'Hmo Billing Id',
 			'hmo_id' => 'HMO Id',
-            'hmo_name' => 'HMO Company',            
+         'hmo_name' => 'HMO Company',            
 			'patient_id' => 'Patient Id',
 			'patient_name' => 'Patient Name',
 			'entry_date' => 'Entry Date',

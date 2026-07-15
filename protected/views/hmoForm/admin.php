@@ -54,11 +54,15 @@ $this->widget('zii.widgets.grid.CGridView', array( 'template'=>"{summary}\n{page
 		'entry_date',
         'avail_date',
         'hmo_billing_id',
-        array(         
-                'name'=>'hmo_billing_date',
-                'type'=>'raw',
-                'value'=>'HmoBilling::model()->findByPk($data->hmo_billing_id)->date_prepared'                        
-         ),
+        // array(         
+        //         'name'=>'hmo_billing_date',
+        //         'type'=>'raw',
+        //         'value'=>'HmoBilling::model()->findByPk($data->hmo_billing_id)->date_prepared'                        
+        //  ),
+        array(
+	    'header' => 'Date Prepared',
+	    'value' => '$data->billing->date_prepared ?? "N/A"',
+	),
 		/*           		
 		'control_no',
 		'card_no',

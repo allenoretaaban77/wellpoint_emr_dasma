@@ -88,7 +88,7 @@
                                         <?php } ?>
                                     </td>
                                     <td>
-                                        <a href="<?php echo Yii::app()->getModule('user')->logoutUrl; ?>" style="display:<?php echo ((Yii::app()->user->isGuest)?'none':'block'); ?>">
+                                        <a href="<?php echo Yii::app()->createUrl(is_array(Yii::app()->getModule('user')->logoutUrl) ? Yii::app()->getModule('user')->logoutUrl[0] : Yii::app()->getModule('user')->logoutUrl); ?>" style="display:<?php echo ((Yii::app()->user->isGuest)?'none':'block'); ?>">
                                             <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/logout_icon.png">
                                         </a>
                                     </td>

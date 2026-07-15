@@ -59,7 +59,8 @@ $('.search-form form').submit(function(){
         array(         
                 'name'=>'pay_doc_id',
                 'type'=>'raw',
-                'value'=>'Doctor::model()->findByPk($data->pay_doc_id)->firstname. " " .Doctor::model()->findByPk($data->pay_doc_id)->lastname'                        
+                // 'value'=>'Doctor::model()->findByPk($data->pay_doc_id)->firstname. " " .Doctor::model()->findByPk($data->pay_doc_id)->lastname'
+                'value' => '$data->doctor ? $data->doctor->firstname . " " . $data->doctor->lastname : "N/A"',                        
          ), 
          
          array(         

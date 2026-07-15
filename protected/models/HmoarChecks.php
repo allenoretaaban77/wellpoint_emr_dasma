@@ -75,6 +75,7 @@ class HmoarChecks extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'doctor' => array(self::BELONGS_TO, 'Doctor', 'pay_doc_id'),
 		);
 	}
 
@@ -146,7 +147,7 @@ class HmoarChecks extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
             'pagination'=>array(
-                'pageSize'=>50,
+                'pageSize'=>10,
             ),
 		));
 	}

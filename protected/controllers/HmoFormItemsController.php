@@ -195,7 +195,8 @@ class HmoFormItemsController extends RController
                 
         }
 
-        if($_GET['rep'] == '1'){
+        // if($_GET['rep'] == '1'){
+        if(isset($_GET['rep']) && $_GET['rep'] == '1'){
             $this->redirect(array('update','id'=>$id));
         }else{
             $this->render('update',array(
@@ -673,23 +674,51 @@ class HmoFormItemsController extends RController
                 }
                 $l=0;
                 $amount = 0;
-                while( $l <= count($charge_category_sub_lab_med_service) ){
-                    $ms_str = isset($charge_category_sub_lab_med_service[$l]) ? $charge_category_sub_lab_med_service[$l]."($charge_category_sub_lab_amount[$l])" : "&nbsp;" ;
-                    //$msa_str = isset($charge_category_sub_lab_amount[$l]) ? $charge_category_sub_lab_amount[$l] : "&nbsp;" ;
-                    //$amount = floatval(preg_replace('/[^\d.]/', '', $charge_category_sub_lab_amount[$l]));
-                    $amount = $charge_category_sub_lab_amount[$l];
-                    $l++;
+                // while( $l <= count($charge_category_sub_lab_med_service) ){
+                //     $ms_str = isset($charge_category_sub_lab_med_service[$l]) ? $charge_category_sub_lab_med_service[$l]."($charge_category_sub_lab_amount[$l])" : "&nbsp;" ;
+                //     //$msa_str = isset($charge_category_sub_lab_amount[$l]) ? $charge_category_sub_lab_amount[$l] : "&nbsp;" ;
+                //     //$amount = floatval(preg_replace('/[^\d.]/', '', $charge_category_sub_lab_amount[$l]));
+                //     $amount = $charge_category_sub_lab_amount[$l];
+                //     $l++;
 
-                    $ms_str = isset($charge_category_sub_lab_med_service[$l]) ? $ms_str." + ".$charge_category_sub_lab_med_service[$l]."($charge_category_sub_lab_amount[$l])" : $ms_str."&nbsp;" ;
-                    //$msa_str = isset($charge_category_sub_lab_amount[$l]) ? $msa_str."+".$charge_category_sub_lab_amount[$l]."+" : $msa_str."" ;
-                    $amount = $amount + $charge_category_sub_lab_amount[$l];
-                    $l++;
+                //     $ms_str = isset($charge_category_sub_lab_med_service[$l]) ? $ms_str." + ".$charge_category_sub_lab_med_service[$l]."($charge_category_sub_lab_amount[$l])" : $ms_str."&nbsp;" ;
+                //     //$msa_str = isset($charge_category_sub_lab_amount[$l]) ? $msa_str."+".$charge_category_sub_lab_amount[$l]."+" : $msa_str."" ;
+                //     $amount = $amount + $charge_category_sub_lab_amount[$l];
+                //     $l++;
 
-                    $msa_str = $amount == 0 ? "" : number_format($amount,2);
-                    $charge_content = $charge_content."<tr><td id='item_svc'>$ms_str</td><td align='right' id='item_amount'>$msa_str</td></tr>";
+                //     $msa_str = $amount == 0 ? "" : number_format($amount,2);
+                //     $charge_content = $charge_content."<tr><td id='item_svc'>$ms_str</td><td align='right' id='item_amount'>$msa_str</td></tr>";
                     
+                //     $catcnt++;
+                // }
+
+                // 1. Change <= to < to avoid checking an out-of-bounds index
+                while( $l < count($charge_category_sub_lab_med_service) ){ 
+                    
+                    // Safely get the first item or default to empty space/0
+                    $current_svc = isset($charge_category_sub_lab_med_service[$l]) ? $charge_category_sub_lab_med_service[$l] : "";
+                    $current_amt = isset($charge_category_sub_lab_amount[$l]) ? $charge_category_sub_lab_amount[$l] : 0;
+                    
+                    $ms_str = $current_svc ? $current_svc . "($current_amt)" : "&nbsp;";
+                    $amount = floatval($current_amt); 
+                    $l++;
+
+                    // 2. Before checking the next paired item, ensure it exists in the array
+                    if ($l < count($charge_category_sub_lab_med_service)) {
+                        $next_svc = isset($charge_category_sub_lab_med_service[$l]) ? $charge_category_sub_lab_med_service[$l] : "";
+                        $next_amt = isset($charge_category_sub_lab_amount[$l]) ? $charge_category_sub_lab_amount[$l] : 0;
+
+                        $ms_str = $next_svc ? $ms_str . " + " . $next_svc . "($next_amt)" : $ms_str . "&nbsp;";
+                        $amount = $amount + floatval($next_amt);
+                        $l++;
+                    }
+
+                    $msa_str = $amount == 0 ? "" : number_format($amount, 2);
+                    $charge_content = $charge_content . "<tr><td id='item_svc'>$ms_str</td><td align='right' id='item_amount'>$msa_str</td></tr>";
+
                     $catcnt++;
                 }
+
                 $charge_content = $charge_content."<tr><td ><b style='color:green;'>&nbsp;</td><td align='right'>&nbsp;</td></tr>"; $catcnt++;
                 $charge_content = $charge_content."<tr><td ><b style='color:green;'>&nbsp;</td><td align='right'>&nbsp;</td></tr>"; $catcnt++;
                 $charge_content = $charge_content."<tr><td ><b style='color:green;'>&nbsp;</td><td align='right'>&nbsp;</td></tr>"; $catcnt++;
@@ -779,8 +808,13 @@ class HmoFormItemsController extends RController
         $print = str_replace("[laboratory_box]",$laboratory_box,$print);
         $print = str_replace("[laboratory_sub_box]",$laboratory_sub_box,$print);
 
-        $profile=Yii::app()->getModule('user')->user()->profile; 
-        $prepared_by = $hb->prepared_by;
+        $profile=Yii::app()->getModule('user')->user()->profile;
+
+        $prepared_by = "";
+        if ($hb !== null) {
+            $prepared_by = $hb->prepared_by;
+        }
+
         if( $prepared_by == "" || $prepared_by == null) {               
             $prepared_by = $profile->first_name.' '.$profile->last_name;
         }
@@ -788,6 +822,7 @@ class HmoFormItemsController extends RController
 
         $print = str_replace("[charge_content]",$charge_content,$print);
 
+        $consString = "";
         if($consamount == "0.00") { 
             $consamount = "&nbsp;"; 
         }else{
@@ -803,11 +838,22 @@ class HmoFormItemsController extends RController
         //var_dump($hb->by_userid);
         $string_image = "";
         $reference_id = 0;
-        if($hb->by_userid != null && $hb->by_userid != ""){
-            $rfid = $hb->by_userid;
-        }else{
+
+        $rfid = "";
+        if ($hb !== null ) {
+            if($hb->by_userid != null && $hb->by_userid != ""){
+                $rfid = $hb->by_userid;
+            } 
+        } else {
             $rfid = $profile->user_id;
         }
+
+        // if($hb->by_userid != null && $hb->by_userid != ""){
+        //     $rfid = $hb->by_userid;
+        // }else{
+        //     $rfid = $profile->user_id;
+        // }
+
         //var_dump($reference_id);
         $signature_size = "20px";
         $signature_margin_bottom = "0px";

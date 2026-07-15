@@ -2,7 +2,7 @@ body{
     /*background:#069206;*/
     background: #fafafa;
     margin:0;
-    font: normal 10pt tahoma;
+    font: normal 10pt 'Roboto', sans-serif;
     padding-bottom:150px!important;
 }
 #header_div{
@@ -22,7 +22,6 @@ body{
 #header_content{
     width:98%;
     margin:0 auto;
-    font-family:tahoma;
     font-size:12px;
     padding:0 3px 0 0;
 }
@@ -43,7 +42,6 @@ body{
     -webkit-box-shadow: 1px 1px 5px #000;
 }
 #left_content{
-    font-family:calibri;
     font-size:15px;
     color:#fff;
     margin:5px 0 0 5px;
@@ -57,7 +55,6 @@ body{
 }
 #title{
     float:right;
-    font-family:tahoma;
     color:#009900;
     font-size:18px;
     margin:18px 0 0 0;
@@ -125,7 +122,6 @@ body{
     font-size:11px;
 }
 #news{
-    font-family:arial;
     margin:10px 0 10px 10px;
     float:left;    
 }
@@ -153,7 +149,7 @@ body{
 .portlet-title { font-size:17px; margin-left:13px; }
 .operations { margin:2px 0px; padding-left:30px; font-weight:700; }
 #sidebar .portlet {
-    padding-bottom: 30px !important;
+    padding-bottom: 5px !important;
     position: fixed;
     width: 100%;
     bottom: 0px;
@@ -164,7 +160,7 @@ body{
     padding: 5px 7px;
 }
 
-#search { padding:7px 8px; border-radius:3px; border: 1px solid gray; font-family:tahoma; font-size:14px; margin-bottom: 10px; }
+#search { padding:7px 8px; border-radius:3px; border: 1px solid gray; font-size:14px; margin-bottom: 10px; }
 form input, form textarea { padding:7px 8px; border-radius:3px; border: 1px solid gray; font-family:tahoma; font-size:14px }
 form select  { padding:6px 8px; border-radius:3px; border: 1px solid gray; font-family:tahoma; font-size:14px }
 form label { family:tahoma!important }
