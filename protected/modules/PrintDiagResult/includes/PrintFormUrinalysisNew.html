@@ -1,17 +1,20 @@
 <html>
 <head>
     <style>
-        body {font-family:arial;font-size:8pt;line-height:10pt}
+        body {font-family:arial;font-size:10pt}
         @media print {
               .noprint { display: none; }
             }
-        .branch{font-size:7pt;text-align: center;}
-        .underl{text-decoration: underline;font-family:arial;font-size:10pt}
-t	tr{height:30px!important;}
-        td{font-family:calibri!important;font-size:9pt!important;height:3pt!important;}
-        .content{text-align:center;border-bottom:#000 solid 1px;width:100%!important;font-size:11pt;}
-        .ucontent{text-align:center;border-bottom:#000 solid 1px;width:100%!important;font-weight:800;font-size:10pt;}
-        .ulabel{color:blue;}
+        td { font-family:calibri!important;font-size:9pt!important;height:9pt!important; }
+        .branch {font-size:7pt;text-align: center;}
+        .underl {text-decoration: underline;font-family:arial;font-size:10pt}
+        .content {text-align:center;border-bottom:#000 solid 1px;width:100%!important;font-size:11pt;}
+        .ucontent {text-align:center;border-bottom:#000 solid 1px;width:100%!important;font-weight:800;font-size:10pt;}
+        .tblcontent td {padding:0px 3px;}
+        .bold_label { height:11pt!important; font-size:11pt !important; font-weight:bold; }
+        .blue_label { height:11pt!important; font-size:11pt !important; color:blue; border-color:#000; padding:0 0 0 10px!important; }
+        .default_label { height:11pt!important; font-size:11pt !important; border-color:#000 }
+        .normal_label { height:11pt!important; font-size:11pt !important; }
     </style>
     <script>               
             window.onload = function(){
@@ -22,102 +25,253 @@ t	tr{height:30px!important;}
 <body>        
         <input class='noprint' type='button' value='Print' onclick='window.print()' />
         <div style="width:790px;">
-                        <div align="center">                            
-                            <table style="width:790px">
+            <div align="center">                            
+                <table style="width:790px">
+                    <tr>
+                        <td>
+                            <div class="branch">[bacoor_address_html]</div>
+                        </td>
+                        <td style="text-align:center;" valign=top >
+                            <img src="[logopath]" style="height:50px;"/>
+                            <div>Medical Clinic and Diagnostic Center, Inc.</div>
+                        </td>
+                    
+                        <td>
+                            <div class="branch">[dasma_address_html]</div>
+                        </td>
+                    </tr>
+                </table>
+            </div>  
+            <hr/>
+            <div>
+                <table>
+                    <tr>
+                        <td width='20'>NAME: </td><td width='452'><div class='content'><b>[name]&nbsp;</b></div></td>
+                        <td width='15'></td>
+                        <td width='10'>Age: </td><td width='30'><div class='content'>[age]&nbsp;</div></td>
+                        <td width='15'></td>
+                        <td width='10'>Sex: </td><td width='30'><div class='content'>[sex]&nbsp;</div></td>
+                        <td width='15'></td>
+                        <td width='50'>Result No: </td><td width='70'><div class='content'>[resultno]&nbsp;</div></td>
+                    </tr>
+                </table>
+                <table width="100%">
+                    <tr>
+                        <td >
+                            <div style="color:gold;text-align:center;width:100%;font-size:18pt!important;font-family:arial;font-weight:800;letter-spacing:5px;margin:20px 0 0 0" >
+                                URINALYSIS
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <table width="100%">
+                    <tr>
+                        <td width='50%' valign="top">    
+                            <table width='100%' class='tblcontent' cellspacing='0' cellpadding='0' border='1'>
                                 <tr>
-                                    <td>
-                                        <div class="branch">[bacoor_address_html]</div>
-                                    </td>
-                                    <td style="text-align:center;" valign=top >
-                                        <img src="[logopath]" style="height:50px;"/>
-                                        <div>Medical Clinic and Diagnostic Center, Inc.</div>
-                                    </td>
-                                
-                                    <td>
-                                        <div class="branch">[dasma_address_html]</div>
-                                    </td>
+                                    <td width='30%' align='center' class='bold_label'>TEST</td>
+                                    <td width='30%' align='center' class='bold_label'>RESULTS</td>
+                                    <td width='10%' align='center' class='bold_label'>UNIT</td>
+                                    <td width='30%' align='center' class='bold_label'>REFERENCE RANGE</td>
                                 </tr>
-                            </table>
-                        </div>                        
 
-                        <hr/>
-                        <div>
-                            <table>
+                                <!-- PHYSICAL CHARACTERISTICS -->
                                 <tr>
-                                    <td width='50'>NAME: </td><td width='400'><div class='content'><b>[name]&nbsp;</b></div></td>
-                                    <td width='20'></td>
-                                    <td width='40'>Age: </td><td width='100'><div class='content'>[age]&nbsp;</div></td>
-                                    <td width='20'></td>
-                                    <td width='40'>Sex: </td><td width='95'><div class='content'>[sex]&nbsp;</div></td>
+                                    <td class='bold_label' align='left' colspan='4'>PHYSICAL CHARACTERISTICS</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>Color</td>
+                                    <td align='center' class='bold_label'>[pccolor]&nbsp;</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                    <td align='center' class='default_label'>YELLOW</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>Transparency</td>
+                                    <td align='center' class='bold_label'>[pctranparency]&nbsp;</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                    <td align='center' class='default_label'>CLEAR</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>Specific Gravity</td>
+                                    <td align='center' class='bold_label'>[pcspecificgravity]&nbsp;</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                    <td align='center' class='default_label'>1.001 - 1.030</td>
+                                </tr>
+
+                                <!-- CHEMICAL CHARACTERISTICS -->
+                                <tr>
+                                    <td class='bold_label' align='left' colspan='4'>CHEMICAL CHARACTERISTICS</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>Leukocyte Esterase</td>
+                                    <td align='center' class='bold_label'>[ccleukocyteesterase]&nbsp;</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                    <td align='center' class='default_label'>NEGATIVE</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>Nitrite</td>
+                                    <td align='center' class='bold_label'>[ccnitrite]&nbsp;</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                    <td align='center' class='default_label'>NEGATIVE</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>Urobilinogen</td>
+                                    <td align='center' class='bold_label'>[ccurobilinogen]&nbsp;</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                    <td align='center' class='default_label'>NEGATIVE</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>Protein</td>
+                                    <td align='center' class='bold_label'>[ccprotein]&nbsp;</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                    <td align='center' class='default_label'>NEGATIVE</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>pH</td>
+                                    <td align='center' class='bold_label'>[ccph]&nbsp;</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                    <td align='center' class='default_label'>5.0 - 8.0</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>Blood</td>
+                                    <td align='center' class='bold_label'>[ccblood]&nbsp;</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                    <td align='center' class='default_label'>NEGATIVE</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>Ketones</td>
+                                    <td align='center' class='bold_label'>[ccketones]&nbsp;</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                    <td align='center' class='default_label'>NEGATIVE</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>Bilirubin</td>
+                                    <td align='center' class='bold_label'>[ccbilirubin]&nbsp;</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                    <td align='center' class='default_label'>NEGATIVE</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>Glucose</td>
+                                    <td align='center' class='bold_label'>[ccglucose]&nbsp;</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                    <td align='center' class='default_label'>NEGATIVE</td>
+                                </tr>
+
+                                <!-- MICROSCOPIC -->
+                                <tr>
+                                    <td class='bold_label' align='left' colspan='4'>MICROSCOPIC</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>Pus Cell</td>
+                                    <td align='center' class='bold_label'>[mpuscell]&nbsp;</td>
+                                    <td align='center' class='default_label'>/HPF</td>
+                                    <td align='center' class='default_label'>&le; 5 WBC /HPF</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>RBC</td>
+                                    <td align='center' class='bold_label'>[mrbc]&nbsp;</td>
+                                    <td align='center' class='default_label'>/HPF</td>
+                                    <td align='center' class='default_label'>&le; 2 RBC /HPF</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>Epithelial Cells</td>
+                                    <td align='center' class='bold_label'>[mepitelialcells]&nbsp;</td>
+                                    <td align='center' class='default_label'>/LPF</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>Mucus Threads</td>
+                                    <td align='center' class='bold_label'>[mmucusthreads]&nbsp;</td>
+                                    <td align='center' class='default_label'>/LPF</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>Crystals</td>
+                                    <td align='center' class='bold_label'>&nbsp;</td>
+                                    <td align='center' class='default_label'>/HPF</td>
+                                    <td align='center' class='default_label'>NONE SEEN /HPF</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Amorphous Urates</td>
+                                    <td align='center' class='bold_label'>[camorphurates]&nbsp;</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Amorphous Phosphates</td>
+                                    <td align='center' class='bold_label'>[camorphphosphates]&nbsp;</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Triple Phosphate</td>
+                                    <td align='center' class='bold_label'>[ctriplephospate]&nbsp;</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Calcium Oxalate</td>
+                                    <td align='center' class='bold_label'>[calciumoxalate]&nbsp;</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Uric Acid</td>
+                                    <td align='center' class='bold_label'>[curicacid]&nbsp;</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>Bacteria</td>
+                                    <td align='center' class='bold_label'>[bacteria]&nbsp;</td>
+                                    <td align='center' class='default_label'>/HPF</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>Casts</td>
+                                    <td align='center' class='bold_label'>[casts]&nbsp;</td>
+                                    <td align='center' class='default_label'>/LPF</td>
+                                    <td align='center' class='default_label'>NONE SEEN /LPF</td>
+                                </tr>
+                                <tr>
+                                    <td align='left' class='blue_label'>Others</td>
+                                    <td align='center' class='bold_label'>[others]&nbsp;</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
+                                    <td align='center' class='default_label'>&nbsp;</td>
                                 </tr>
                             </table>
-                            <table>
+                            <div style="margin-top:5px" class='normal_label'><b>NOTE:</b> RESULT(S) VERIFIED. PLEASE CORRELATE CLINICALLY.</div>
+                        </td>
+                    </tr>
+                </table>
+                
+                <table width="100%" style="margin:40px 0px 0px 0px;">
+                    <tr>
+                        <td width='50%' valign="top" >
+                            <table  width='100%'>
                                 <tr>
-                                    <td width='140'>Requesting Physician: </td><td width='250'><div class='content'>[requesting_physician]&nbsp;</div></td>
-                                    <td width='20'></td>
-                                    <td width='50'>Sp No. </td><td width='305'><div class='content'>[spno]&nbsp;</div></td>
+                                    <td align='center' class='normal_label' >Date Requested: [daterequested]</td>
+                                <tr>
+                                    <td align='center' style='font-size:12px!important;'>
+                                        <div style='font-size:17px;font-weight:800;margin-top:20px;'>[medtech]</div>Medical Technologist - License No. [licenseno]
+                                    </td>
                                 </tr>
                             </table>
-                            <table width="100%">
+                        </td>
+                        <td width='50%' valign="top" >
+                            <table  width='100%'>
                                 <tr>
-                                    <td style="color:yellow;text-align:center;width:100%;font-size:18pt!important;font-family:arial;font-weight:800;height:30pt!important;letter-spacing:5px;">URINALYSIS</td>
+                                    <td align='center' class='normal_label' >Date Released: [datereleased]</td>
+                                <tr>
+                                    <td align='center' style='font-size:12px!important;'>
+                                        <div style='font-size:17px;font-weight:800;margin-top:20px;'>[pathologist]</div>Phatologist - License No. [pathologist_licenseno]
+                                    </td>
                                 </tr>
                             </table>
-                            <table width="100%"><tr>
-                                <td width='50%' valign="top">
-                                    <table width='100%'>
-                                        <tr><td colspan="3"><b>Physical Characteristic:</b></td></tr>
-                                        <tr><td width='15%'></td><td width='28%' class='ulabel'>Color</td><td width='57%'><div class='ucontent'>[pccolor]&nbsp;</div></td></tr>
-                                        <tr><td width='15%'></td><td width='28%' class='ulabel'>Transparency</td><td width='57%'><div class='ucontent'>[pctranparency]&nbsp;</div></td></tr>
-                                        <tr><td width='15%'></td><td width='28%' class='ulabel'>Specific Gravity</td><td width='57%'><div class='ucontent'>[pcspecificgravity]&nbsp;</div></td></tr>
-                                        <tr><td colspan="3"><b>Chemical Characteristic:</b></td></tr>
-                                        <tr><td width='15%'></td><td width='28%' class='ulabel'>pH</td><td width='57%'><div class='ucontent'>[ccph]&nbsp;</div></td></tr>
-                                        <tr><td width='15%'></td><td width='28%' class='ulabel'>Sugar</td><td width='57%'><div class='ucontent'>[ccsugar]&nbsp;</div></td></tr>
-                                        <tr><td width='15%'></td><td width='28%' class='ulabel'>Protein</td><td width='57%'><div class='ucontent'>[ccprotein]&nbsp;</div></td></tr>
-                                        <tr><td colspan="3"><b>Microscopic:</b></td></tr>
-                                        <tr><td width='15%'></td><td width='28%' class='ulabel'>Pus Cell</td><td width='57%'><div class='ucontent'>[mpuscell]&nbsp;</div></td></tr>
-                                        <tr><td width='15%'></td><td width='28%' class='ulabel'>RBC</td><td width='57%'><div class='ucontent'>[mrbc]&nbsp;</div></td></tr>
-                                        <tr><td width='15%'></td><td width='28%' class='ulabel'>Epithelial Cells</td><td width='57%'><div class='ucontent'>[mepitelialcells]&nbsp;</div></td></tr>
-                                        <tr><td width='15%'></td><td width='28%' class='ulabel'>Mucus Threads</td><td width='57%'><div class='ucontent'>[mmucusthreads]&nbsp;</div></td></tr>
-                                    </table>
-                                </td>
-                                <td width='50%' valign="top">    
-                                    <table  width='100%'>
-                                        <tr><td colspan="3"><b>Crystals:</b></td></tr>
-                                        <tr><td width='8%'></td><td width='38%' class='ulabel'>Amorphous Urates</td><td width='57%'><div class='ucontent'>[camorphurates]&nbsp;</div></td></tr>
-                                        <tr><td width='8%'></td><td width='38%' class='ulabel'>Amorphous Phospates</td><td width='57%'><div class='ucontent'>[camorphphosphates]&nbsp;</div></td></tr>
-                                        <tr><td width='8%'></td><td width='38%' class='ulabel'>Uric Acid</td><td width='57%'><div class='ucontent'>[curicacid]&nbsp;</div></td></tr>
-                                        <tr><td width='8%'></td><td width='38%' class='ulabel'>Triple Phosphate</td><td width='57%'><div class='ucontent'>[ctriplephospate]&nbsp;</div></td></tr>
-                                        <tr><td width='8%'></td><td width='38%' class='ulabel'>Calcium Oxalate</td><td width='57%'><div class='ucontent'>[calciumoxalate]&nbsp;</div></td></tr>
-                                        <tr><td colspan="2" width='38%' class='ulabel'>Bacteria</td><td width='57%'><div class='ucontent'>[bacteria]&nbsp;</div></td></tr>
-                                        <tr><td colspan="2" width='38%' class='ulabel'>Casts</td><td width='57%'><div class='ucontent'>[casts]&nbsp;</div></td></tr>
-                                        <tr><td colspan="2" width='38%' class='ulabel'>Pregnancy Tests</td><td width='57%'><div class='ucontent'>[pregnancy]&nbsp;</div></td></tr>
-                                        <tr><td colspan="2" width='38%' class='ulabel' valign="top">Others</td><td width='57%' style='border:1px solid #000!important;font-size:11px!important;padding:3px!important;text-align:left;height:70px!important;'>[others]&nbsp;</td></tr>
-                                    </table>
-                                    <div style="margin-top:5px">
-                                        NOTE: PLEASE CORRELATE CLINICALLY
-&nbsp;&nbsp;** Test Repeated And Verified
-                                    </div>
-                                </td>
-                            </tr></table>
-                            
-                            <table width="100%" style="margin:5px 0px 0px 0px;"><tr>
-                                <td width='50%' valign="top">
-                                    <table  width='100%'>
-                                        <tr><td width='35%' class='ulabel'>Date Received</td><td width='65%'><div class='ucontent'>[datereceived]&nbsp;</div></td></tr>
-                                        <tr><td colspan='3' style='line-height:15px!important;font-size:12px!important;'><br/>
-                                            <div style='font-size:15px;font-weight:800;margin-top:5px;'>[medtech]</div>Medical Technologist - License No. [licenseno]</td></tr>
-                                    </table>
-                                </td>
-                                <td width='50%' valign="top">    
-                                    <table  width='100%'>
-                                        <tr><td width='35%' class='ulabel'>Date Released</td><td width='65%'><div class='ucontent'>[datereleased]&nbsp;</div></td></tr>
-                                        <tr><td colspan='3' style='line-height:14px;font-size:12px!important;'><br/><div style='font-size:15px;font-weight:800;margin-top:5px;'>[pathologist]</div>Pathologist - License No. [patlicenseno]</td></tr>
-                                    </table>
-                                </td>
-                            </tr></table>
-                        </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
-        
 </body>
 </html>
