@@ -25,6 +25,9 @@ $this->breadcrumbs=array(
             <a href="<?= Yii::app()->createAbsoluteUrl('DiagUrinalysis/admin',array()) ?>" >Urinalysis</a>
         </li>
         <li>
+            <a href="<?= Yii::app()->createAbsoluteUrl('DiagUrinalysisNew/admin',array()) ?>" >Urinalysis New</a>
+        </li>
+        <li>
             <a href="<?= Yii::app()->createAbsoluteUrl('DiagFecalysis/admin',array()) ?>" >Fecalysis</a>
         </li>
         <li>
