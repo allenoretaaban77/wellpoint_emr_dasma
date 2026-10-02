@@ -2,6 +2,17 @@
 h3{
     color:#008000;
 }
+legend {
+    color: #008000;
+    font-size: 1.17em;
+    font-weight: bold;
+}
+input[type="text"]:read-only,
+input[type="number"]:read-only,
+input[type="email"]:read-only,
+textarea:read-only {
+    background-color: #e6f8d1;
+}
 </style>
 <div class="form">
 
@@ -9,7 +20,7 @@ h3{
     $diagTemp="";
     $patientid="";
     
-    if(!$_POST["patientval"]){            
+    if(!isset($_POST["patientval"])){            
         $patientid = $_POST["DiagUrinalysis"]['patient_id'];
     }else{
         list($patientname, $patientno) = explode("|",$_POST["patientval"]);
@@ -268,16 +279,22 @@ h3{
 		<?php echo $form->error($model,'med_tech'); ?>
 	</div>
 
-        <div class="row">
-            <?php echo $form->labelEx($model,'licenseno'); ?>
-            <?php echo $form->textField($model,'licenseno',array('size'=>20,'maxlength'=>20,'readonly'=>'readonly')); ?>
-            <?php echo $form->error($model,'licenseno'); ?>
-        </div>
+    <div class="row">
+        <?php echo $form->labelEx($model,'licenseno'); ?>
+        <?php echo $form->textField($model,'licenseno',array('size'=>20,'maxlength'=>20,'readonly'=>'readonly')); ?>
+        <?php echo $form->error($model,'licenseno'); ?>
+    </div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'pathologist'); ?>
-		<?php echo $form->textField($model,'pathologist',array('size'=>60,'maxlength'=>200, 'value'=> $diagSettings->pathologist_name)); ?>
+		<?php echo $form->textField($model,'pathologist',array('size'=>60,'maxlength'=>200, 'value'=> $diagSettings->pathologist_name, 'readonly' => 'readonly')); ?>
 		<?php echo $form->error($model,'pathologist'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'pathologist_licenseno'); ?>
+		<?php echo $form->textField($model,'pathologist_licenseno',array('size'=>60,'maxlength'=>200, 'value'=> $diagSettings->pathologist_licenseno, 'readonly' => 'readonly')); ?>
+		<?php echo $form->error($model,'pathologist_licenseno'); ?>
 	</div>
 
 	<div class="row" style="display:none;">

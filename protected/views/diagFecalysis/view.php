@@ -48,6 +48,7 @@ $this->menu=array(
 		'medicaltechnologist',
 		'licenseno',
 		'pathologist',
+		'pathologist_licenseno',
 		'patient_id',
 	),
 )); ?>

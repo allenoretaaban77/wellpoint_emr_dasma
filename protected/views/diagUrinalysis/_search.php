@@ -141,6 +141,11 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->label($model,'pathologist_licenseno'); ?>
+		<?php echo $form->textField($model,'pathologist_licenseno',array('size'=>60,'maxlength'=>200)); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model,'patient_id'); ?>
 		<?php echo $form->textField($model,'patient_id',array('size'=>20,'maxlength'=>20)); ?>
 	</div>

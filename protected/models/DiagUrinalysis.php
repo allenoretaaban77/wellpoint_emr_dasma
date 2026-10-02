@@ -34,6 +34,7 @@
  * @property string $med_tech
  * @property string $licenseno
  * @property string $pathologist
+ * @property string $pathologist_licenseno
  * @property string $datereceived
  * @property string $datereleased
  * @property string $patient_id
@@ -69,16 +70,16 @@ class DiagUrinalysis extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('requesting_physician, med_tech, licenseno, pathologist, datereceived, datereleased', 'required'),
+			array('requesting_physician, med_tech, licenseno, pathologist, pathologist_licenseno, datereceived, datereleased', 'required'),
 			array('age', 'numerical', 'integerOnly'=>true),
 			//array('id', 'length', 'max'=>10),
 			array('name, sex, requesting_physician, sp_no, pc_color, pc_tranparency, pc_specific_gravity, cc_ph, cc_sugar, cc_protein, m_puscell, m_rbc, m_epitelial_cells, m_mucus_threads, c_amorph_urates, c_amorph_phosphates, c_uric_acid, c_triple_phospate, c_calcium_oxalate, bacteria, casts, pregnancy_test, licenseno', 'length', 'max'=>250),
-			array('others, med_tech, pathologist', 'length', 'max'=>200),
+			array('others, med_tech, pathologist, pathologist_licenseno', 'length', 'max'=>200),
 			array('patient_id', 'length', 'max'=>20),
                         array('datecreated', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('name, age, sex, requesting_physician, sp_no, pc_color, pc_tranparency, pc_specific_gravity, cc_ph, cc_sugar, cc_protein, m_puscell, m_rbc, m_epitelial_cells, m_mucus_threads, c_amorph_urates, c_amorph_phosphates, c_uric_acid, c_triple_phospate, c_calcium_oxalate, bacteria, casts, pregnancy_test, others, datecreated, med_tech, licenseno, pathologist, datereceived, datereleased', 'safe', 'on'=>'search'),
+			array('name, age, sex, requesting_physician, sp_no, pc_color, pc_tranparency, pc_specific_gravity, cc_ph, cc_sugar, cc_protein, m_puscell, m_rbc, m_epitelial_cells, m_mucus_threads, c_amorph_urates, c_amorph_phosphates, c_uric_acid, c_triple_phospate, c_calcium_oxalate, bacteria, casts, pregnancy_test, others, datecreated, med_tech, licenseno, pathologist, pathologist_licenseno, datereceived, datereleased', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -129,6 +130,7 @@ class DiagUrinalysis extends CActiveRecord
             'med_tech' => 'Med Tech',
             'licenseno' => 'Medical Technologist License No.',
 			'pathologist' => 'Pathologist',
+			'pathologist_licenseno' => 'Pathologist License No.',
             'datereceived' => 'Date Received',
             'datereleased' => 'Date Released',
 			'patient_id' => 'Patient',
@@ -175,6 +177,7 @@ class DiagUrinalysis extends CActiveRecord
 		$criteria->compare('med_tech',$this->med_tech,true);
                 $criteria->compare('licenseno',$this->licenseno,true);
 		$criteria->compare('pathologist',$this->pathologist,true);
+		$criteria->compare('pathologist_licenseno',$this->pathologist_licenseno,true);
 		$criteria->compare('datereceived',$this->datereceived,true);
 		$criteria->compare('datereleased',$this->datereleased,true);
 		$criteria->compare('patient_id',$this->patient_id,true);

@@ -2,6 +2,17 @@
 h3{
     color:#008000;
 }
+legend {
+    color: #008000;
+    font-size: 1.17em;
+    font-weight: bold;
+}
+input[type="text"]:read-only,
+input[type="number"]:read-only,
+input[type="email"]:read-only,
+textarea:read-only {
+    background-color: #e6f8d1;
+}
 </style>
 <div class="form">
 
@@ -10,7 +21,7 @@ h3{
     $patientid="";
     
     
-        if(!$_POST["patientval"]) {
+        if(!isset($_POST["patientval"])) {
             $patientid = $_POST["DiagFecalysis"]['patient_id'];
         } else {
             list($patientname, $patient_id) = explode("|",$_POST["patientval"]);
@@ -37,6 +48,12 @@ h3{
     $birthday_timestamp = strtotime($diagTemp["birthdate"]);  
     $age = date('md', $birthday_timestamp) > date('md') ? date('Y') - date('Y', $birthday_timestamp) - 1 : date('Y') - date('Y', $birthday_timestamp);
     $sex = trim($diagTemp['gender']);
+
+    $diagSettings = (object) Yii::app()->db->createCommand()
+        ->select('*')
+        ->from('diag_settings')    
+        ->where('id=:id', array(':id' => 1))
+        ->queryRow();
 ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -218,9 +235,17 @@ h3{
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'pathologist'); ?>
-		<?php echo $form->textField($model,'pathologist',array('size'=>60,'maxlength'=>200)); ?>
+		<?php echo $form->textField($model,'pathologist',array('size'=>60,'maxlength'=>200, 'value'=> $diagSettings->pathologist_name, 'readonly' => 'readonly')); ?>
 		<?php echo $form->error($model,'pathologist'); ?>
 	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'pathologist_licenseno'); ?>
+		<?php echo $form->textField($model,'pathologist_licenseno',array('size'=>60,'maxlength'=>200, 'value'=> $diagSettings->pathologist_licenseno, 'readonly' => 'readonly')); ?>
+		<?php echo $form->error($model,'pathologist_licenseno'); ?>
+	</div>
+    
+    <hr>
 
     <div class="row" style="display:none;">		
         <input type="hidden" name="DiagFecalysis[patient_id]" value="<?=$patientid ?>">		

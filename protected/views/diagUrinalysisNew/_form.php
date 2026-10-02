@@ -329,7 +329,7 @@ textarea:read-only {
             </div>
             <div class="row line">
                 <?php echo $form->labelEx($model, 'pathologist_licenseno'); ?>
-                <?php echo $form->textField($model, 'pathologist_licenseno', array('size' => 30, 'maxlength' => 200, 'readonly' => 'readonly', 'value'=> $diagSettings->pathologist_license_no)); ?>
+                <?php echo $form->textField($model, 'pathologist_licenseno', array('size' => 30, 'maxlength' => 200, 'readonly' => 'readonly', 'value'=> $diagSettings->pathologist_licenseno)); ?>
                 <?php echo $form->error($model, 'pathologist_licenseno'); ?>
             </div>
         </div>

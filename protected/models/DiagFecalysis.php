@@ -27,6 +27,7 @@
  * @property string $medicaltechnologist
  * @property string $licenseno
  * @property string $pathologist
+ * @property string $pathologist_licenseno
  * @property string $datereceived
  * @property string $datereleased
  * @property string $patient_id
@@ -62,14 +63,14 @@ class DiagFecalysis extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('requestingphysician, medicaltechnologist, licenseno, pathologist, datereceived, datereleased', 'required'),
+			array('requestingphysician, medicaltechnologist, licenseno, pathologist, pathologist_licenseno, datereceived, datereleased', 'required'),
 			array('age', 'numerical', 'integerOnly'=>true),
-			array('name, sex, requestingphysician, spno, color, consistency, mucus, undigestedfood, wbc, rbc, fatglobules, yeastcells, bacteria, parasites, amoeba, occultblood, others, medicaltechnologist, licenseno, pathologist', 'length', 'max'=>200),
+			array('name, sex, requestingphysician, spno, color, consistency, mucus, undigestedfood, wbc, rbc, fatglobules, yeastcells, bacteria, parasites, amoeba, occultblood, others, medicaltechnologist, licenseno, pathologist, pathologist_licenseno', 'length', 'max'=>200),
 			array('patient_id', 'length', 'max'=>20),
 			array('datecreated', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('name, age, sex, requestingphysician, spno, color, consistency, mucus, undigestedfood, wbc, rbc, fatglobules, yeastcells, bacteria, parasites, amoeba, occultblood, others, medicaltechnologist, licenseno, pathologist, datereceived, datereleased, patient_id', 'safe', 'on'=>'search'),
+			array('name, age, sex, requestingphysician, spno, color, consistency, mucus, undigestedfood, wbc, rbc, fatglobules, yeastcells, bacteria, parasites, amoeba, occultblood, others, medicaltechnologist, licenseno, pathologist, pathologist_licenseno, datereceived, datereleased, patient_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -112,8 +113,9 @@ class DiagFecalysis extends CActiveRecord
 			'others' => 'Others',
 			'datecreated' => 'Date Created',
 			'medicaltechnologist' => 'Med Tech',
-			'licenseno' => 'Medical Technologist Licence No.',
+			'licenseno' => 'Medical Technologist License No.',
 			'pathologist' => 'Pathologist',
+			'pathologist_licenseno' => 'Pathologist License No.',
             'datereceived' => 'Date Received',
             'datereleased' => 'Date Released',
 			'patient_id' => 'Patient No.',
@@ -154,6 +156,7 @@ class DiagFecalysis extends CActiveRecord
 		$criteria->compare('medicaltechnologist',$this->medicaltechnologist,true);
 		$criteria->compare('licenseno',$this->licenseno,true);
 		$criteria->compare('pathologist',$this->pathologist,true);
+		$criteria->compare('pathologist_licenseno',$this->pathologist_licenseno,true);
 		$criteria->compare('datereceived',$this->datereceived,true);
 		$criteria->compare('datereleased',$this->datereleased,true);
 		$criteria->compare('patient_id',$this->patient_id,true);

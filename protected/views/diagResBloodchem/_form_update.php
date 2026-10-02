@@ -150,7 +150,7 @@ textarea:read-only {
     
     <div class="row">
         <?php echo $form->labelEx($model,'pathologist_id'); ?>
-        <?php echo $form->textField($model,'pathologist_id',array('size'=>60,'maxlength'=>250, 'readonly'=>'readonly', 'value'=> $diagSettings->pathologist_license_no)); ?>
+        <?php echo $form->textField($model,'pathologist_id',array('size'=>60,'maxlength'=>250, 'readonly'=>'readonly', 'value'=> $diagSettings->pathologist_licenseno)); ?>
         <?php echo $form->error($model,'pathologist_id'); ?>
     </div>
     <hr/>
