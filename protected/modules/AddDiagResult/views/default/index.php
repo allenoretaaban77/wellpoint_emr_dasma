@@ -49,6 +49,9 @@ if (isset($_SESSION['errmg']))
         <a href="<?= Yii::app()->createAbsoluteUrl('diagHematology',array()) ?>" >Hematology</a>
     </li>
     <li>
+        <a href="<?= Yii::app()->createAbsoluteUrl('diagHematologyNew',array()) ?>" >Hematology New</a>
+    </li>
+    <li>
         <a href="<?= Yii::app()->createAbsoluteUrl('DiagRapidtest', array()) ?>" >Rapid COVID-19 Test</a>
     </li>
     <li>

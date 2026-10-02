@@ -34,6 +34,9 @@ $this->breadcrumbs=array(
             <a href="<?= Yii::app()->createAbsoluteUrl('DiagHematology/admin',array()) ?>" >Hematology</a>
         </li>
         <li>
+            <a href="<?= Yii::app()->createAbsoluteUrl('DiagHematologyNew/admin',array()) ?>" >Hematology New</a>
+        </li>
+        <li>
             <a href="<?= Yii::app()->createAbsoluteUrl('DiagRapidtest/admin',array()) ?>" >Rapid COVID-19 Test</a>
         </li>
         <li>

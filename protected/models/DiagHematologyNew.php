@@ -1,11 +1,12 @@
 <?php
 
 /**
- * This is the model class for table "diag_hematology".
+ * This is the model class for table "diag_hematology_new".
  *
- * The followings are the available columns in table 'diag_hematology':
+ * The followings are the available columns in table 'diag_hematology_new':
  * @property string $id
  * @property string $name
+ * @property string $create_date
  * @property integer $age
  * @property string $sex
  * @property string $requestingphysician
@@ -14,39 +15,32 @@
  * @property string $hemoglobin
  * @property string $hematocrit
  * @property string $wbc
- * @property string $segmenters
+ * @property string $neutrophils
  * @property string $lymphocytes
  * @property string $monocytes
  * @property string $eosinophils
- * @property string $stabband
- * @property string $basophil
- * @property string $plateletcount
+ * @property string $basophils
+ * @property string $platelet
  * @property string $mcv
  * @property string $mch
  * @property string $mchc
  * @property string $rdw
- * @property string $bloodtype
- * @property string $rhtype
- * @property string $esr
- * @property string $bleedingtime
- * @property string $clottingtime
- * @property string $others
+ * @property string $rdw_sd
  * @property string $datecreated
  * @property string $medicaltechnologist
  * @property string $licenseno
  * @property string $pathologist
  * @property string $pathologist_licenseno
+ * @property string $datereceived
+ * @property string $datereleased
  * @property string $patient_id
- *
- * The followings are the available model relations:
- * @property Patient $patient
  */
-class DiagHematology extends CActiveRecord
+class DiagHematologyNew extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return DiagHematology the static model class
+	 * @return DiagHematologyNew the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -58,7 +52,7 @@ class DiagHematology extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'diag_hematology';
+		return 'diag_hematology_new';
 	}
 
 	/**
@@ -69,15 +63,14 @@ class DiagHematology extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('requestingphysician, medicaltechnologist, licenseno, pathologist, pathologist_licenseno, datereceived, datereleased', 'required'),
+			array('name, age, sex, requestingphysician, medicaltechnologist, licenseno, pathologist, pathologist_licenseno, datereceived, datereleased, patient_id', 'required'),
 			array('age', 'numerical', 'integerOnly'=>true),
-			array('name, sex, requestingphysician, spno, rbc, hemoglobin, hematocrit, wbc, segmenters, lymphocytes, monocytes, eosinophils, stabband, basophil, plateletcount, mcv, mch, mchc, rdw, bloodtype, rhtype, esr, bleedingtime, clottingtime, medicaltechnologist, pathologist, pathologist_licenseno', 'length', 'max'=>200),
-			array('others', 'length', 'max'=>150),
+			array('name, sex, requestingphysician, spno, rbc, hemoglobin, hematocrit, wbc, neutrophils, lymphocytes, monocytes, eosinophils, basophils, platelet, mcv, mch, mchc, rdw, rdw_sd, medicaltechnologist, pathologist, pathologist_licenseno', 'length', 'max'=>200),
 			array('licenseno, patient_id', 'length', 'max'=>20),
-			array('datecreated', 'safe'),
+			array('datecreated, datereleased', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, age, sex, requestingphysician, spno, rbc, hemoglobin, hematocrit, wbc, segmenters, lymphocytes, monocytes, eosinophils, stabband, basophil, plateletcount, bloodtype, rhtype, esr, bleedingtime, clottingtime, others, datecreated, medicaltechnologist, licenseno, pathologist, pathologist_licenseno, datereceived, datereleased', 'safe', 'on'=>'search'),
+			array('id, name, create_date, age, sex, requestingphysician, spno, rbc, hemoglobin, hematocrit, wbc, neutrophils, lymphocytes, monocytes, eosinophils, basophils, platelet, mcv, mch, mchc, rdw, rdw_sd, datecreated, medicaltechnologist, licenseno, pathologist, pathologist_licenseno, datereceived, datereleased, patient_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -89,7 +82,6 @@ class DiagHematology extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'patient' => array(self::BELONGS_TO, 'Patient', 'patient_id'),
 		);
 	}
 
@@ -100,39 +92,34 @@ class DiagHematology extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Full Name',
+			'name' => 'Name',
+			'create_date' => 'Create Date',
 			'age' => 'Age',
 			'sex' => 'Sex',
 			'requestingphysician' => 'Requesting Physician',
-			'spno' => 'Sp No.',
+			'spno' => 'Sp No',
 			'rbc' => 'RBC',
 			'hemoglobin' => 'Hemoglobin',
 			'hematocrit' => 'Hematocrit',
 			'wbc' => 'WBC',
-			'segmenters' => 'Segmenters',
+			'neutrophils' => 'Neutrophils',
 			'lymphocytes' => 'Lymphocytes',
 			'monocytes' => 'Monocytes',
 			'eosinophils' => 'Eosinophils',
-			'stabband' => 'Stab/Band',
-			'basophil' => 'Basophil',
-			'plateletcount' => 'Platelet Count',
+			'basophils' => 'Basophils',
+			'platelet' => 'Platelet',
 			'mcv' => 'MCV',
 			'mch' => 'MCH',
-			'mchc' => 'MCHc',
+			'mchc' => 'MCHC',
 			'rdw' => 'RDW',
-			'bloodtype' => 'Blood Type',
-			'rhtype' => 'RH Type',
-			'esr' => 'ESR',
-			'bleedingtime' => 'Bleeding Time',
-			'clottingtime' => 'Clotting Time',
-			'others' => 'Others',
+			'rdw_sd' => 'RDW-SD',
 			'datecreated' => 'Date Created',
-			'medicaltechnologist' => 'Med Tech',
+			'medicaltechnologist' => 'Medical Technologist',
 			'licenseno' => 'Medical Technologist License No.',
 			'pathologist' => 'Pathologist',
 			'pathologist_licenseno' => 'Pathologist License No.',
-            'datereceived' => 'Date Received',
-            'datereleased' => 'Date Released',
+			'datereceived' => 'Date Received',
+			'datereleased' => 'Date Released',
 			'patient_id' => 'Patient',
 		);
 	}
@@ -150,6 +137,7 @@ class DiagHematology extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('name',$this->name,true);
+		$criteria->compare('create_date',$this->create_date,true);
 		$criteria->compare('age',$this->age);
 		$criteria->compare('sex',$this->sex,true);
 		$criteria->compare('requestingphysician',$this->requestingphysician,true);
@@ -158,23 +146,17 @@ class DiagHematology extends CActiveRecord
 		$criteria->compare('hemoglobin',$this->hemoglobin,true);
 		$criteria->compare('hematocrit',$this->hematocrit,true);
 		$criteria->compare('wbc',$this->wbc,true);
-		$criteria->compare('segmenters',$this->segmenters,true);
+		$criteria->compare('neutrophils',$this->neutrophils,true);
 		$criteria->compare('lymphocytes',$this->lymphocytes,true);
 		$criteria->compare('monocytes',$this->monocytes,true);
 		$criteria->compare('eosinophils',$this->eosinophils,true);
-		$criteria->compare('stabband',$this->stabband,true);
-		$criteria->compare('basophil',$this->basophil,true);
-		$criteria->compare('plateletcount',$this->plateletcount,true);
+		$criteria->compare('basophils',$this->basophils,true);
+		$criteria->compare('platelet',$this->platelet,true);
 		$criteria->compare('mcv',$this->mcv,true);
 		$criteria->compare('mch',$this->mch,true);
 		$criteria->compare('mchc',$this->mchc,true);
 		$criteria->compare('rdw',$this->rdw,true);
-		$criteria->compare('bloodtype',$this->bloodtype,true);
-		$criteria->compare('rhtype',$this->rhtype,true);
-		$criteria->compare('esr',$this->esr,true);
-		$criteria->compare('bleedingtime',$this->bleedingtime,true);
-		$criteria->compare('clottingtime',$this->clottingtime,true);
-		$criteria->compare('others',$this->others,true);
+		$criteria->compare('rdw_sd',$this->rdw_sd,true);
 		$criteria->compare('datecreated',$this->datecreated,true);
 		$criteria->compare('medicaltechnologist',$this->medicaltechnologist,true);
 		$criteria->compare('licenseno',$this->licenseno,true);
@@ -183,13 +165,9 @@ class DiagHematology extends CActiveRecord
 		$criteria->compare('datereceived',$this->datereceived,true);
 		$criteria->compare('datereleased',$this->datereleased,true);
 		$criteria->compare('patient_id',$this->patient_id,true);
-        $criteria->order='id desc';  
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
-            'pagination'=>array(
-                'pageSize'=>50,
-            ),
 		));
 	}
 }

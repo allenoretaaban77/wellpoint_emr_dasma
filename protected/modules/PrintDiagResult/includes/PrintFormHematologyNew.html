@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: arial; font-size: 10pt; }
+        @media print {
+            .noprint { display: none; }
+        }
+        td { font-family: calibri!important; font-size: 9pt!important; height: 9pt!important; }
+        .branch { font-size: 7pt; text-align: center; }
+        .underl { text-decoration: underline; font-family: arial; font-size: 10pt; }
+        .content { text-align: center; border-bottom: #000 solid 1px; width: 100%!important; font-size: 11pt; }
+        .ucontent { text-align: center; border-bottom: #000 solid 1px; width: 100%!important; font-weight: 800; font-size: 10pt; }
+        .tblcontent td { padding: 0px 3px; }
+        .bold_label { height: 11pt!important; font-size: 11pt !important; font-weight: bold; }
+        .blue_label { height: 11pt!important; font-size: 11pt !important; color: blue; border-color: #000; padding: 0 0 0 10px!important; }
+        .default_label { height: 11pt!important; font-size: 11pt !important; border-color: #000; }
+        .normal_label { height: 11pt!important; font-size: 11pt !important; }
+    </style>
+    <script>
+        window.onload = function(){
+            //window.print();
+        };
+    </script>
+</head>
+<body>
+    <input class='noprint' type='button' value='Print' onclick='window.print()' />
+    <div style="width:790px;">
+        <div align="center">
+            <table style="width:790px">
+                <tr>
+                    <td>
+                        <div class="branch">[bacoor_address_html]</div>
+                    </td>
+                    <td style="text-align:center;" valign="top">
+                        <img src="[logopath]" style="height:50px;"/>
+                        <div>Medical Clinic and Diagnostic Center, Inc.</div>
+                    </td>
+                    <td>
+                        <div class="branch">[dasma_address_html]</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <hr/>
+        <div>
+            <table>
+                <tr>
+                    <td width='20'>NAME: </td><td width='462'><div class='content'><b>[name]&nbsp;</b></div></td>
+                    <td width='15'></td>
+                    <td width='10'>Age: </td><td width='30'><div class='content'>[age]&nbsp;</div></td>
+                    <td width='15'></td>
+                    <td width='10'>Sex: </td><td width='30'><div class='content'>[sex]&nbsp;</div></td>
+                    <td width='15'></td>
+                    <td width='35'>SP No: </td><td width='70'><div class='content'>[spno]&nbsp;</div></td>
+                </tr>
+            </table>
+            <table width="100%">
+                <tr>
+                    <td>
+                        <div style="color:maroon;text-align:center;width:100%;font-size:18pt!important;font-family:arial;font-weight:800;letter-spacing:5px;margin:20px 0 0 0">
+                            HEMATOLOGY
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <table width="100%">
+                <tr>
+                    <td width='100%' valign="top">
+                        <table width='100%' class='tblcontent' cellspacing='0' cellpadding='0' border='1'>
+                            <tr>
+                                <td width='25%' align='center' class='bold_label'>TEST</td>
+                                <td width='25%' align='center' class='bold_label'>RESULTS</td>
+                                <td width='15%' align='center' class='bold_label'>UNIT</td>
+                                <td width='10%' align='center' class='bold_label'>FLAG</td>
+                                <td width='25%' align='center' class='bold_label'>REFERENCE RANGE</td>
+                            </tr>
+                            <tr>
+                                <td align='left' class='blue_label'>RBC</td>
+                                <td align='center' class='bold_label'>[rbc]</td>
+                                <td align='center' class='default_label'>x10^6/uL</td>
+                                <td align='center' class='bold_label'></td>
+                                <td align='center' class='default_label'>4.0 - 5.4</td>
+                            </tr>
+                            <tr>
+                                <td align='left' class='blue_label'>HEMOGLOBIN</td>
+                                <td align='center' class='bold_label'>[hemoglobin]</td>
+                                <td align='center' class='default_label'>g/L</td>
+                                <td align='center' class='bold_label'></td>
+                                <td align='center' class='default_label'>120 - 160</td>
+                            </tr>
+                            <tr>
+                                <td align='left' class='blue_label'>HEMATOCRIT</td>
+                                <td align='center' class='bold_label'>[hematocrit]</td>
+                                <td align='center' class='default_label'></td>
+                                <td align='center' class='bold_label'></td>
+                                <td align='center' class='default_label'>0.37 - 0.43</td>
+                            </tr>
+                            <tr>
+                                <td align='left' class='blue_label'>WBC</td>
+                                <td align='center' class='bold_label'>[wbc]</td>
+                                <td align='center' class='default_label'>x10^9/L</td>
+                                <td align='center' class='bold_label'></td>
+                                <td align='center' class='default_label'>4.0 - 10</td>
+                            </tr>
+                            <tr>
+                                <td align='left' class='blue_label'>Neutrophils</td>
+                                <td align='center' class='bold_label'>[neutrophils]</td>
+                                <td align='center' class='default_label'></td>
+                                <td align='center' class='bold_label'></td>
+                                <td align='center' class='default_label'>0.55 - 0.65</td>
+                            </tr>
+                            <tr>
+                                <td align='left' class='blue_label'>Lymphocytes</td>
+                                <td align='center' class='bold_label'>[lymphocytes]</td>
+                                <td align='center' class='default_label'></td>
+                                <td align='center' class='bold_label'></td>
+                                <td align='center' class='default_label'>0.25 - 0.35</td>
+                            </tr>
+                            <tr>
+                                <td align='left' class='blue_label'>Monocytes</td>
+                                <td align='center' class='bold_label'>[monocytes]</td>
+                                <td align='center' class='default_label'></td>
+                                <td align='center' class='bold_label'>H</td>
+                                <td align='center' class='default_label'>0.03 - 0.06</td>
+                            </tr>
+                            <tr>
+                                <td align='left' class='blue_label'>Eosinophils</td>
+                                <td align='center' class='bold_label'>[eosinophils]</td>
+                                <td align='center' class='default_label'></td>
+                                <td align='center' class='bold_label'></td>
+                                <td align='center' class='default_label'>0.02 - 0.04</td>
+                            </tr>
+                            <tr>
+                                <td align='left' class='blue_label'>Basophils</td>
+                                <td align='center' class='bold_label'>[basophils]</td>
+                                <td align='center' class='default_label'></td>
+                                <td align='center' class='bold_label'></td>
+                                <td align='center' class='default_label'>0.00 - 0.01</td>
+                            </tr>
+                            <tr>
+                                <td align='left' class='blue_label'>PLATELET</td>
+                                <td align='center' class='bold_label'>[platelet]</td>
+                                <td align='center' class='default_label'>x10^9/L</td>
+                                <td align='center' class='bold_label'></td>
+                                <td align='center' class='default_label'>170 - 400</td>
+                            </tr>
+                            <tr>
+                                <td align='left' class='blue_label'>MCV</td>
+                                <td align='center' class='bold_label'>[mcv]</td>
+                                <td align='center' class='default_label'>fL</td>
+                                <td align='center' class='bold_label'>H</td>
+                                <td align='center' class='default_label'>80 - 90</td>
+                            </tr>
+                            <tr>
+                                <td align='left' class='blue_label'>MCH</td>
+                                <td align='center' class='bold_label'>[mch]</td>
+                                <td align='center' class='default_label'>fL</td>
+                                <td align='center' class='bold_label'></td>
+                                <td align='center' class='default_label'>28 - 32</td>
+                            </tr>
+                            <tr>
+                                <td align='left' class='blue_label'>MCHC</td>
+                                <td align='center' class='bold_label'>[mchc]</td>
+                                <td align='center' class='default_label'>g/dL</td>
+                                <td align='center' class='bold_label'></td>
+                                <td align='center' class='default_label'>30 - 36</td>
+                            </tr>
+                            <tr>
+                                <td align='left' class='blue_label'>RDW</td>
+                                <td align='center' class='bold_label'>[rdw]</td>
+                                <td align='center' class='default_label'>%</td>
+                                <td align='center' class='bold_label'></td>
+                                <td align='center' class='default_label'>11.6 - 14.6</td>
+                            </tr>
+                            <tr>
+                                <td align='left' class='blue_label'>RDW-SD</td>
+                                <td align='center' class='bold_label'>[rdw_sd]</td>
+                                <td align='center' class='default_label'>fL</td>
+                                <td align='center' class='bold_label'></td>
+                                <td align='center' class='default_label'></td>
+                            </tr>
+                        </table>
+                        <div style="margin-top:5px" class='normal_label'><b>NOTE:</b> RESULT(S) VERIFIED. SUGGEST CLINICAL CORRELATION.</div>
+                    </td>
+                </tr>
+            </table>
+            
+            <table width="100%" style="margin:40px 0px 0px 0px;">
+                <tr>
+                    <td width='50%' valign="top">
+                        <table width='100%'>
+                            <tr>
+                                <td align='center' class='normal_label'>Date Received: [datereceived]</td>
+                            </tr>
+                            <tr>
+                                <td align='center' style='font-size:12px!important;'>
+                                    <div style='font-size:17px;font-weight:800;margin-top:20px;'>[medicaltechnologist]</div>Medical Technologist - License No. [licenseno]
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td width='50%' valign="top">
+                        <table width='100%'>
+                            <tr>
+                                <td align='center' class='normal_label'>Date Released: [datereleased]</td>
+                            </tr>
+                            <tr>
+                                <td align='center' style='font-size:12px!important;'>
+                                    <div style='font-size:17px;font-weight:800;margin-top:20px;'>[pathologist]</div>Pathologist - License No. [pathologist_licenseno]
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

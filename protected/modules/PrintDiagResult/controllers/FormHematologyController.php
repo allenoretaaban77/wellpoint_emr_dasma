@@ -58,6 +58,7 @@ class FormHematologyController extends Controller
         $print = str_replace("[medtech]",strtoupper($model->medicaltechnologist),$print); 
         $print = str_replace("[licenseno]",strtoupper($model->licenseno),$print); 
         $print = str_replace("[pathologist]",strtoupper($model->pathologist),$print);  
+        $print = str_replace("[pathologist_licenseno]",strtoupper($model->pathologist_licenseno),$print); 
         $print = str_replace("[patlicenseno]","0076484",$print);  
         $print = str_replace("[patientid]",$model->patient_id,$print);   
         
