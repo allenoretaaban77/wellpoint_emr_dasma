@@ -14,21 +14,22 @@ $diagTemp = Yii::app()->db->createCommand()
 <h1>Select a Patient</h1>
 *To search, type in the patient's <span style="color:blue">first name</span> or <span style="color:blue">last name</span> or <span style="color:blue">patient id</span>.
 <br/>
+<div style="float:left;margin:3px 0px 3px 0px;">
 <?php 
 $model = new Patient();
 echo $this->widget('zii.widgets.jui.CJuiAutoComplete',
                             array(
                                     'model'=>$model,
                                     'attribute'=>'id',
-                                    'htmlOptions' => array("size"=>'50','style'=>'padding:10px;'),
+                                    'htmlOptions' => array("size"=>'50','style'=>'margin:0px 0px 5px 0px;'),
                                     'sourceUrl'=>Yii::app()->createAbsoluteUrl('Patient/lookup',array())
                                      
                             ),
                             true
                         );
 ?>
-
-<div>
+</div>
+<div style="width:100%;float:left;">
     <input type="hidden" name="diagtemp" value="<?=$_POST["tempid"] ?>|<?=$diagTemp["temp_title"] ?>" />
     <input type="hidden" name="patientval" value="" id="patientval" />
     <input type="submit" value=" Create Result " />

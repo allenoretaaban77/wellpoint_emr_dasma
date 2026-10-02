@@ -61,6 +61,8 @@ class FormBloodChemController extends Controller
         $print = str_replace("[licenseno]",strtoupper($model->medtech_license),$print);         
                                     
         $print = str_replace("[pathologist]",strtoupper($model->pathologist),$print); 
+                                    
+        $print = str_replace("[pathologist_id]",strtoupper($model->pathologist_id),$print); 
         $print = str_replace("[patlicenseno]","0076484",$print);  
         $print = str_replace("[patientid]",$model->patient_id,$print);   
         

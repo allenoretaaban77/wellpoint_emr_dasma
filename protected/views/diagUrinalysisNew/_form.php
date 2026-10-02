@@ -7,6 +7,12 @@ legend {
     font-size: 1.17em;
     font-weight: bold;
 }
+input[type="text"]:read-only,
+input[type="number"]:read-only,
+input[type="email"]:read-only,
+textarea:read-only {
+    background-color: #e6f8d1;
+}
 </style>
 <div class="form">
 

@@ -74,7 +74,7 @@ class DiagResBloodchem extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('sp_no, req_doctor, medtech, medtech_license, pathologist, datereceived, datereleased', 'required'),
+			array('sp_no, req_doctor, medtech, medtech_license, pathologist, pathologist_id, datereceived, datereleased', 'required'),
 			array('createby, patient_id, age, lastupdateby, med_tech_id, pathologist_id', 'numerical', 'integerOnly'=>true),
 			array('resultno', 'length', 'max'=>11),
 			array('sp_no, patient_name, req_doctor, read_doctor, medtech, pathologist, glucose, bun, creatinine, uric_acid, cholesterol, triglycerides, hdl_c, ldl_c, vldl_c, sgot_ast, sgpt_alt, hba1c, total_bilirubin, direct_bilirubin, indirect_bilirubin, sodium, potassium, chloride, calcium, alkaline_phosphatase, other', 'length', 'max'=>250),

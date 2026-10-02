@@ -8,7 +8,13 @@ $patient = Yii::app()->db->createCommand()
 $birthday_timestamp = strtotime($patient["birthdate"]);  
 $age = date('md', $birthday_timestamp) > date('md') ? date('Y') - date('Y', $birthday_timestamp) - 1 : date('Y') - date('Y', $birthday_timestamp);
 //gender
-($patient["gender"] == "M")? $gender="Male" : $gender = "Female";    
+($patient["gender"] == "M")? $gender="Male" : $gender = "Female";  
+
+$diagSettings = (object) Yii::app()->db->createCommand()
+    ->select('*')
+    ->from('diag_settings')    
+    ->where('id=:id', array(':id' => 1))
+    ->queryRow();  
 ?>
 <style>
 div.row{
@@ -19,6 +25,20 @@ div.row{
 }
 .row small{
     color:#0000FF;
+}
+h3{
+    color:#008000;
+}
+legend {
+    color: #008000;
+    font-size: 1.17em;
+    font-weight: bold;
+}
+input[type="text"]:read-only,
+input[type="number"]:read-only,
+input[type="email"]:read-only,
+textarea:read-only {
+    background-color: #e6f8d1;
 }
 </style>
 
@@ -124,8 +144,14 @@ div.row{
     
     <div class="row">
         <?php echo $form->labelEx($model,'pathologist'); ?>
-        <?php echo $form->textField($model,'pathologist',array('size'=>60,'maxlength'=>250)); ?>
+        <?php echo $form->textField($model,'pathologist',array('size'=>60,'maxlength'=>250, 'readonly'=>'readonly', 'value'=> $diagSettings->pathologist_name)); ?>
         <?php echo $form->error($model,'pathologist'); ?>
+    </div>
+    
+    <div class="row">
+        <?php echo $form->labelEx($model,'pathologist_id'); ?>
+        <?php echo $form->textField($model,'pathologist_id',array('size'=>60,'maxlength'=>250, 'readonly'=>'readonly', 'value'=> $diagSettings->pathologist_license_no)); ?>
+        <?php echo $form->error($model,'pathologist_id'); ?>
     </div>
     <hr/>
     
