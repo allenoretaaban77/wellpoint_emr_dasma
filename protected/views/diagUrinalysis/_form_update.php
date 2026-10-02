@@ -10,7 +10,7 @@ h3{
     $patientid="";
 
     
-        if(!$_POST["patientval"]){
+        if(!isset($_POST["patientval"])){
             $du = Yii::app()->db->createCommand()
                 ->select('*')
                 ->from('diag_urinalysis')    

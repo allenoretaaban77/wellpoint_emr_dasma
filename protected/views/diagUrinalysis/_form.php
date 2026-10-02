@@ -8,20 +8,19 @@ h3{
 <?php 
     $diagTemp="";
     $patientid="";
-
     
-        if(!$_POST["patientval"]){            
-            $patientid = $_POST["DiagUrinalysis"]['patient_id'];
-        }else{
-            list($patientname, $patientno) = explode("|",$_POST["patientval"]);
-            list($dum, $patientid) = explode(":",$patientno);
-        }
-        
-        $diagTemp = Yii::app()->db->createCommand()
-            ->select('*')
-            ->from('patient')    
-            ->where('id=:id', array(':id'=>$patientid))
-            ->queryRow();
+    if(!$_POST["patientval"]){            
+        $patientid = $_POST["DiagUrinalysis"]['patient_id'];
+    }else{
+        list($patientname, $patientno) = explode("|",$_POST["patientval"]);
+        list($dum, $patientid) = explode(":",$patientno);
+    }
+    
+    $diagTemp = Yii::app()->db->createCommand()
+        ->select('*')
+        ->from('patient')    
+        ->where('id=:id', array(':id'=>$patientid))
+        ->queryRow();
     
     $form=$this->beginWidget('CActiveForm', array(
 	    'id'=>'diag-urinalysis-form',
@@ -36,6 +35,12 @@ h3{
     $birthday_timestamp = strtotime($diagTemp["birthdate"]);  
     $age = date('md', $birthday_timestamp) > date('md') ? date('Y') - date('Y', $birthday_timestamp) - 1 : date('Y') - date('Y', $birthday_timestamp);
     $sex = trim($diagTemp['gender']);
+
+    $diagSettings = (object) Yii::app()->db->createCommand()
+        ->select('*')
+        ->from('diag_settings')    
+        ->where('id=:id', array(':id' => 1))
+        ->queryRow();
 ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -271,7 +276,7 @@ h3{
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'pathologist'); ?>
-		<?php echo $form->textField($model,'pathologist',array('size'=>60,'maxlength'=>200)); ?>
+		<?php echo $form->textField($model,'pathologist',array('size'=>60,'maxlength'=>200, 'value'=> $diagSettings->pathologist_name)); ?>
 		<?php echo $form->error($model,'pathologist'); ?>
 	</div>
 

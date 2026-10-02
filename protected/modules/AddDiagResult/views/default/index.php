@@ -40,6 +40,9 @@ if (isset($_SESSION['errmg']))
         <a href="<?= Yii::app()->createAbsoluteUrl('DiagUrinalysis',array()) ?>" >Urinalysis</a>
     </li>
     <li>
+        <a href="<?= Yii::app()->createAbsoluteUrl('DiagUrinalysisNew',array()) ?>" >Urinalysis New</a>
+    </li>
+    <li>
         <a href="<?= Yii::app()->createAbsoluteUrl('diagFecalysis',array()) ?>" >Fecalysis</a>
     </li>
     <li>

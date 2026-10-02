@@ -5,10 +5,10 @@ class DiagUrinalysisNewController extends RController
     //for menu
     public $layout='//layouts/column2';
     
-	public function actionIndex()
-	{
-		$this->render('index');
-	}
+    public function actionIndex()
+    {
+        $this->render('index');
+    }
     
     public function filters()
     {
@@ -52,14 +52,14 @@ class DiagUrinalysisNewController extends RController
     
     public function actionCreate()
     {
-        $model=new DiagUrinalysis;
+        $model=new DiagUrinalysisNew;
 
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
-        if(isset($_POST['DiagUrinalysis']))
+        if(isset($_POST['DiagUrinalysisNew']))
         {
-            $model->attributes=$_POST['DiagUrinalysis'];
+            $model->attributes=$_POST['DiagUrinalysisNew'];
             //$model->datecreated=date('Y-m-d');
             //$model->datereleased=date('Y-m-d');
             if($model->save())
@@ -82,9 +82,9 @@ class DiagUrinalysisNewController extends RController
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
-        if(isset($_POST['DiagUrinalysis']))
+        if(isset($_POST['DiagUrinalysisNew']))
         {
-            $model->attributes=$_POST['DiagUrinalysis'];
+            $model->attributes=$_POST['DiagUrinalysisNew'];
             if($model->save())
                 $this->redirect(array('view','id'=>$model->id));
         }
@@ -111,10 +111,10 @@ class DiagUrinalysisNewController extends RController
     
     public function actionAdmin()
     {
-        $model=new DiagUrinalysis('search');
+        $model=new DiagUrinalysisNew('search');
         $model->unsetAttributes();  // clear any default values
-        if(isset($_GET['DiagUrinalysis']))
-            $model->attributes=$_GET['DiagUrinalysis'];
+        if(isset($_GET['DiagUrinalysisNew']))
+            $model->attributes=$_GET['DiagUrinalysisNew'];
 
         $this->render('admin',array(
             'model'=>$model,
@@ -123,7 +123,7 @@ class DiagUrinalysisNewController extends RController
     
     public function loadModel($id)
     {
-        $model=DiagUrinalysis::model()->findByPk($id);
+        $model=DiagUrinalysisNew::model()->findByPk($id);
         if($model===null)
             throw new CHttpException(404,'The requested page does not exist.');
         return $model;
@@ -137,4 +137,31 @@ class DiagUrinalysisNewController extends RController
             Yii::app()->end();
         }
     }
+
+    // Uncomment the following methods and override them if needed
+    /*
+    public function filters()
+    {
+        // return the filter configuration for this controller, e.g.:
+        return array(
+            'inlineFilterName',
+            array(
+                'class'=>'path.to.FilterClass',
+                'propertyName'=>'propertyValue',
+            ),
+        );
+    }
+
+    public function actions()
+    {
+        // return external action classes, e.g.:
+        return array(
+            'action1'=>'path.to.ActionClass',
+            'action2'=>array(
+                'class'=>'path.to.AnotherActionClass',
+                'propertyName'=>'propertyValue',
+            ),
+        );
+    }
+    */
 }
